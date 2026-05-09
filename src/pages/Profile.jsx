@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/shared/Navbar";
 import ProfileHero from "@/components/profile/ProfileHero";
@@ -9,7 +9,7 @@ import CompatibilitySection from "@/components/profile/CompatibilitySection";
 import WorkStyleSection from "@/components/profile/WorkStyleSection";
 import DimensionsSection from "@/components/profile/DimensionsSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, AlertCircle, Lightbulb, Briefcase, Users, Copy, Check } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle, Lightbulb, Briefcase, Users, Copy, Check, Heart, MessageCircle, CalendarDays, Sparkles } from "lucide-react";
 import { strengthDetails, recommendations } from "@/lib/personalityExtended";
 import { toast } from "sonner";
 
@@ -32,22 +32,98 @@ function fade(delay = 0) {
   };
 }
 
+function getRelationshipInsights(type) {
+  return [
+    {
+      title: "How you connect",
+      text: type[0] === "E"
+        ? "You build closeness through shared momentum, frequent contact, and being actively involved in each other's world."
+        : "You build closeness slowly and deeply. Trust grows through consistency, privacy, and conversations that feel honest rather than performative.",
+    },
+    {
+      title: "What you need",
+      text: type[2] === "F"
+        ? "Emotional safety, warmth, and signs that your feelings are being considered before decisions are made."
+        : "Directness, competence, and a partner or friend who respects clear thinking without taking every disagreement personally.",
+    },
+    {
+      title: "Watch out for",
+      text: type[3] === "J"
+        ? "Trying to define the relationship too quickly when the other person needs more time or flexibility."
+        : "Leaving important things vague for too long. A little clarity can make your freedom feel safer, not smaller.",
+    },
+  ];
+}
+
+function getProfileRecommendations(type) {
+  return [
+    {
+      icon: CalendarDays,
+      title: "Weekly reset",
+      text: type[3] === "J"
+        ? "Leave one open block each week with no plan. Your structure works better when it has room to breathe."
+        : "Pick one fixed weekly reset time. It gives your spontaneity a home base instead of turning into scattered energy.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Communication habit",
+      text: type[2] === "F"
+        ? "Say the need underneath the feeling. It keeps emotional honesty from becoming guesswork for other people."
+        : "Name the human impact before the solution. People hear your logic better when they feel considered first.",
+    },
+    {
+      icon: Sparkles,
+      title: "Growth move",
+      text: type[1] === "N"
+        ? "Turn one big idea into a small visible action this week. Insight becomes confidence when it touches reality."
+        : "Try one new angle before choosing the practical answer. Your groundedness gets stronger when it stays curious.",
+    },
+  ];
+}
+
 export default function Profile() {
   const [result, setResult] = useState(null);
   const [copied, setCopied] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const stored = sessionStorage.getItem("quizResult");
-    if (stored) setResult(JSON.parse(stored));
-    else navigate("/quiz");
-  }, [navigate]);
+    const stored = sessionStorage.getItem("quizResult") || localStorage.getItem("quizResult");
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      setResult(parsed);
+      sessionStorage.setItem("quizResult", JSON.stringify(parsed));
+    }
+  }, []);
 
-  if (!result) return null;
+  if (!result) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main className="pt-28 pb-20 px-4">
+          <div className="max-w-3xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-10 text-center">
+            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
+              <Users className="w-7 h-7 text-primary" />
+            </div>
+            <h1 className="font-heading text-3xl md:text-5xl font-bold">My Profile</h1>
+            <p className="mt-4 text-muted-foreground text-lg">
+              Take the Soul Test once and this page becomes your saved dashboard for recommendations, relationship style, work habits, and type insights.
+            </p>
+            <Link to="/quiz" className="inline-block mt-7">
+              <Button size="lg" className="rounded-full gap-2 px-8">
+                Take the Test
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   const { type, percentages, details } = result;
   const strengths = strengthDetails[type] || [];
   const recs = recommendations[type] || [];
+  const relationshipInsights = getRelationshipInsights(type);
+  const profileRecommendations = getProfileRecommendations(type);
 
   const handleCopyType = () => {
     navigator.clipboard.writeText(`${type} — ${details.title}\n"${details.tagline}"\n\n${details.description}`);
@@ -66,6 +142,52 @@ export default function Profile() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-14 space-y-20 pb-24">
+
+        <section>
+          <SectionLabel>My Profile Dashboard</SectionLabel>
+          <div className="grid lg:grid-cols-3 gap-4">
+            <motion.div {...fade(0)} className="lg:col-span-2 bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-5">
+                <Heart className="w-5 h-5 text-rose-500" />
+                <h2 className="font-heading text-xl font-semibold">Relationships</h2>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-3">
+                {relationshipInsights.map((item) => (
+                  <div key={item.title} className="rounded-xl bg-secondary/60 border border-border/60 p-4">
+                    <div className="font-semibold text-sm mb-2">{item.title}</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div {...fade(0.08)} className="bg-card border border-border rounded-2xl p-6">
+              <div className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Profile Snapshot</div>
+              <div className="font-heading text-4xl font-bold">{type}</div>
+              <p className="text-sm text-muted-foreground mt-2">{details.title}</p>
+              <div className="mt-5 space-y-2">
+                {details.strengths.slice(0, 3).map((strength) => (
+                  <div key={strength} className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-primary" />
+                    <span>{strength}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 mt-4">
+            {profileRecommendations.map(({ icon: Icon, title, text }, i) => (
+              <motion.div key={title} {...fade(i * 0.06)} className="bg-card border border-border rounded-2xl p-5">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-heading font-semibold mb-2">{title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
         {/* ── ABOUT ── */}
         <section>

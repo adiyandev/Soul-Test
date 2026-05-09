@@ -15,7 +15,7 @@ function TypePill({ type }) {
 }
 
 const sections = [
-  { key: "best", label: "Best Matches", icon: Heart, color: "text-rose-500", description: "Natural complements — high chemistry and growth potential." },
+  { key: "best", label: "Best Matches", icon: Heart, color: "text-rose-500", description: "Natural complements with high chemistry and growth potential." },
   { key: "good", label: "Good Matches", icon: ThumbsUp, color: "text-primary", description: "Solid compatibility with shared values or complementary traits." },
   { key: "challenging", label: "Growth Matches", icon: Zap, color: "text-amber-500", description: "More effort required, but can lead to meaningful development." },
 ];

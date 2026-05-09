@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { BrainCircuit } from "lucide-react";
+import { BrainCircuit, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
@@ -16,6 +16,16 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-2">
+          <Link to="/profile">
+            <Button
+              variant={pathname === "/profile" ? "secondary" : "ghost"}
+              size="sm"
+              className="text-sm gap-1.5"
+            >
+              <UserRound className="w-4 h-4" />
+              <span className="hidden sm:inline">My Profile</span>
+            </Button>
+          </Link>
           <Link to="/types">
             <Button
               variant={pathname === "/types" ? "secondary" : "ghost"}

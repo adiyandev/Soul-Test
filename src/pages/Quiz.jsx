@@ -29,8 +29,8 @@ export default function Quiz() {
 
   const handleFinish = () => {
     const result = calculateResult(answers);
-    // Store result in sessionStorage and navigate
     sessionStorage.setItem("quizResult", JSON.stringify(result));
+    localStorage.setItem("quizResult", JSON.stringify(result));
     navigate("/results");
   };
 
