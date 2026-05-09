@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { ClipboardList, Brain, Fingerprint } from "lucide-react";
+import { Brain, ClipboardList, Fingerprint } from "lucide-react";
 
 const steps = [
   {
     icon: ClipboardList,
     title: "Answer Honestly",
-    description: "Respond to 20 carefully crafted statements. There are no right or wrong answers — just be yourself.",
+    description: "Respond to 20 carefully crafted statements. There are no right or wrong answers - just be yourself.",
   },
   {
     icon: Brain,
@@ -21,32 +21,34 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 md:py-32 px-4 bg-secondary/50">
-      <div className="max-w-5xl mx-auto">
+    <section className="py-16 md:py-20 px-4 sm:px-6 bg-secondary/60">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10"
         >
-          <h2 className="font-heading text-3xl md:text-5xl font-bold">How It Works</h2>
-          <p className="mt-4 text-muted-foreground text-lg">Three simple steps to self-discovery.</p>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold">What you get</h2>
+          <p className="text-muted-foreground text-lg max-w-xl">
+            A quick test that turns your answers into a profile you can actually recognize.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-4">
           {steps.map((step, i) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="relative text-center"
+              transition={{ delay: i * 0.12 }}
+              className="relative rounded-xl border border-border bg-card p-6"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 mb-5">
                 <step.icon className="w-7 h-7 text-primary" />
               </div>
-              <div className="absolute -top-2 -right-2 md:right-auto md:left-[calc(50%+24px)] w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">
+              <div className="absolute top-5 right-5 w-8 h-8 rounded-full bg-secondary text-secondary-foreground text-sm font-bold flex items-center justify-center">
                 {i + 1}
               </div>
               <h3 className="font-heading text-xl font-semibold mb-3">{step.title}</h3>

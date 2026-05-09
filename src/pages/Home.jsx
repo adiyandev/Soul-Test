@@ -4,7 +4,7 @@ import HowItWorks from "@/components/landing/HowItWorks";
 import TypesPreview from "@/components/landing/TypesPreview";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, BrainCircuit } from "lucide-react";
 
 export default function Home() {
   return (
@@ -14,20 +14,21 @@ export default function Home() {
       <HowItWorks />
       <TypesPreview />
 
-      {/* CTA Footer */}
-      <section className="py-24 md:py-32 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-6">
-            <Sparkles className="w-7 h-7 text-white" />
+      <section className="py-16 md:py-20 px-4 sm:px-6 bg-foreground text-background">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg bg-background/10">
+            <BrainCircuit className="w-7 h-7 text-background" />
           </div>
-          <h2 className="font-heading text-3xl md:text-5xl font-bold">
-            Ready to Discover Yourself?
-          </h2>
-          <p className="mt-4 text-muted-foreground text-lg max-w-lg mx-auto">
-            It only takes 5 minutes. Your personality profile awaits.
-          </p>
-          <Link to="/quiz" className="inline-block mt-8">
-            <Button size="lg" className="text-base px-10 py-6 rounded-full group shadow-lg shadow-primary/25">
+          <div>
+            <h2 className="font-heading text-3xl md:text-5xl font-bold">
+              Ready for the actual test?
+            </h2>
+            <p className="mt-3 text-background/70 text-lg max-w-2xl">
+              Start with your first instinct. The result gets better when you answer like yourself, not like your ideal self.
+            </p>
+          </div>
+          <Link to="/quiz" className="md:justify-self-end">
+            <Button size="lg" variant="secondary" className="w-full sm:w-auto text-base px-8 py-6 rounded-full group">
               Start Free Test
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -35,14 +36,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-8 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+      <footer className="border-t border-border py-8 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Sparkles className="w-3 h-3 text-white" />
+            <div className="w-6 h-6 rounded-md bg-foreground flex items-center justify-center">
+              <BrainCircuit className="w-3 h-3 text-background" />
             </div>
-            <span className="font-heading font-semibold text-foreground">PersonaLens</span>
+            <span className="font-heading font-semibold text-foreground">Soul Test</span>
           </div>
           <p>Discover who you truly are. For entertainment purposes.</p>
         </div>

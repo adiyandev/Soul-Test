@@ -1,103 +1,107 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight, BrainCircuit, CheckCircle2, Clock3, Compass, Fingerprint } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const previewTraits = [
+  { label: "Energy", value: "Introverted", width: "72%" },
+  { label: "Focus", value: "Intuitive", width: "84%" },
+  { label: "Decisions", value: "Feeling", width: "64%" },
+  { label: "Lifestyle", value: "Perceiving", width: "78%" },
+];
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-      {/* Animated gradient orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-[10%] w-72 h-72 md:w-96 md:h-96 rounded-full bg-primary/10 blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, -25, 0], y: [0, 30, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-20 right-[10%] w-72 h-72 md:w-96 md:h-96 rounded-full bg-accent/10 blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, 15, 0], y: [0, 15, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 rounded-full bg-chart-3/8 blur-3xl"
-        />
-      </div>
-
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <section className="relative overflow-hidden px-4 sm:px-6 pt-28 pb-14 md:pt-32 md:pb-20">
+      <div className="absolute inset-x-0 top-16 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[1fr_0.88fr] gap-10 lg:gap-14 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
-            <Sparkles className="w-4 h-4" />
-            Free Personality Test
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 border border-border">
+            <BrainCircuit className="w-4 h-4" />
+            20-question personality profile
+          </div>
+
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] max-w-3xl">
+            Soul Test
+            <span className="block text-primary">for the way you actually think.</span>
+          </h1>
+
+          <p className="mt-5 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            Answer fast, get a readable profile, and see the habits, strengths, and blind spots that shape how you move through life.
+          </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <Link to="/quiz">
+              <Button size="lg" className="w-full sm:w-auto text-base px-7 py-6 rounded-full group shadow-lg shadow-primary/20">
+                Take the Test
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="/types">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto text-base px-7 py-6 rounded-full">
+                Explore Types
+              </Button>
+            </Link>
+          </div>
+
+          <div className="mt-8 grid grid-cols-3 gap-3 max-w-xl">
+            {[
+              [Clock3, "5 min"],
+              [CheckCircle2, "20 prompts"],
+              [Fingerprint, "16 results"],
+            ].map(([Icon, label]) => (
+              <div key={label} className="rounded-lg border border-border bg-card px-3 py-3">
+                <Icon className="w-4 h-4 text-primary mb-2" />
+                <div className="text-sm font-semibold">{label}</div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]"
-        >
-          Discover Your
-          <br />
-          <span className="bg-gradient-to-r from-primary via-accent to-chart-3 bg-clip-text text-transparent">
-            True Self
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-6 md:mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-        >
-          Take our scientifically-inspired personality assessment and unlock deep insights 
-          about your strengths, motivations, and how you connect with the world.
-        </motion.p>
-
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="rounded-xl border border-border bg-card shadow-xl shadow-primary/5 p-5 md:p-6"
         >
-          <Link to="/quiz">
-            <Button size="lg" className="text-base px-8 py-6 rounded-full group shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
-              Take the Test
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-          <Link to="/types">
-            <Button variant="outline" size="lg" className="text-base px-8 py-6 rounded-full">
-              Explore All Types
-            </Button>
-          </Link>
-        </motion.div>
+          <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
+            <div>
+              <div className="text-sm text-muted-foreground">Sample result</div>
+              <h2 className="font-heading text-3xl font-bold mt-1">INFP</h2>
+              <p className="text-sm text-muted-foreground mt-1">The Mediator - reflective, imaginative, values-led.</p>
+            </div>
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+              <Compass className="w-6 h-6 text-primary" />
+            </div>
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-16 md:mt-20 flex items-center justify-center gap-8 md:gap-12 text-muted-foreground"
-        >
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-foreground">20</div>
-            <div className="text-xs md:text-sm mt-1">Questions</div>
+          <div className="mt-5 space-y-4">
+            {previewTraits.map((trait) => (
+              <div key={trait.label}>
+                <div className="flex items-center justify-between text-sm mb-2">
+                  <span className="font-medium">{trait.label}</span>
+                  <span className="text-muted-foreground">{trait.value}</span>
+                </div>
+                <div className="h-2 rounded-full bg-secondary overflow-hidden">
+                  <div className="h-full rounded-full bg-primary" style={{ width: trait.width }} />
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="w-px h-10 bg-border" />
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-foreground">5 min</div>
-            <div className="text-xs md:text-sm mt-1">To Complete</div>
-          </div>
-          <div className="w-px h-10 bg-border" />
-          <div className="text-center">
-            <div className="text-2xl md:text-3xl font-bold text-foreground">16</div>
-            <div className="text-xs md:text-sm mt-1">Personality Types</div>
+
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="rounded-lg bg-secondary p-4">
+              <div className="text-xs text-muted-foreground">Strength</div>
+              <div className="mt-1 font-semibold">Reads people deeply</div>
+            </div>
+            <div className="rounded-lg bg-secondary p-4">
+              <div className="text-xs text-muted-foreground">Growth edge</div>
+              <div className="mt-1 font-semibold">Overthinks choices</div>
+            </div>
           </div>
         </motion.div>
       </div>

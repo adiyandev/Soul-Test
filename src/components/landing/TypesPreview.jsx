@@ -11,23 +11,23 @@ const groups = [
 
 export default function TypesPreview() {
   return (
-    <section className="py-24 md:py-32 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-16 md:py-20 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10"
         >
-          <h2 className="font-heading text-3xl md:text-5xl font-bold">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold max-w-xl">
             16 Unique Personalities
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-xl">
             Which one are you? Each type has its own set of strengths, dreams, and view of the world.
           </p>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="grid lg:grid-cols-4 gap-4">
           {groups.map((group, gi) => (
             <motion.div
               key={group.label}
@@ -40,21 +40,25 @@ export default function TypesPreview() {
                 <div className={`w-3 h-3 rounded-full ${group.color}`} />
                 <h3 className="font-heading text-xl font-semibold">{group.label}</h3>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3">
                 {group.types.map((typeKey) => {
                   const t = personalityTypes[typeKey];
                   return (
                     <Link
                       key={typeKey}
                       to={`/types?type=${typeKey}`}
-                      className="group relative bg-card border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                      className="group relative bg-card border border-border rounded-xl p-4 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
                     >
-                      <div className="text-3xl mb-3">{t.emoji}</div>
-                      <div className="font-mono text-sm text-primary font-semibold tracking-wider">
-                        {typeKey}
-                      </div>
-                      <div className="font-heading text-base font-semibold mt-1">
-                        {t.title}
+                      <div className="flex items-start gap-3">
+                        <div className="text-2xl leading-none">{t.emoji}</div>
+                        <div className="min-w-0">
+                          <div className="font-mono text-sm text-primary font-semibold tracking-wider">
+                            {typeKey}
+                          </div>
+                          <div className="font-heading text-base font-semibold mt-1">
+                            {t.title}
+                          </div>
+                        </div>
                       </div>
                       <p className="text-xs text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
                         {t.tagline}
