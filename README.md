@@ -1,33 +1,43 @@
 # Soul Test
 
-Personality quiz app built with React and Vite.
+A lightweight personality quiz built with **React** and **Vite**.
 
-## Local Development
+## ✨ Features
 
-1. Install dependencies:
+- Interactive personality questions
+- Fast client-side experience
+- Responsive UI
+- Production builds with Vite
 
-   ```sh
-   npm install
-   ```
+## 🚀 Development
 
-2. Start the dev server:
+```bash
+npm install
+npm run dev
+```
 
-   ```sh
-   npm run dev
-   ```
+Build for production:
 
-## Build
-
-Create a production build:
-
-```sh
+```bash
 npm run build
 ```
 
-## Deploy to GitHub Pages
+Deploy to GitHub Pages:
 
-Build and publish the `dist` folder:
-
-```sh
+```bash
 npm run deploy
 ```
+
+## 📦 Tech Stack
+
+- React
+- Vite
+- JavaScript
+
+## Status
+
+🧪 Personal project / experiment.
+
+## Author
+
+**Adiyan** — [@adiyandev](https://github.com/adiyandev)
