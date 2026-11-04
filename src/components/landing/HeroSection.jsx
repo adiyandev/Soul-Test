@@ -22,7 +22,7 @@ export default function HeroSection() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 border border-border">
             <BrainCircuit className="w-4 h-4" />
-            20-question personality profile
+            48-question personality assessment
           </div>
 
           <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.04] max-w-3xl">
@@ -31,7 +31,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-5 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Answer fast, get a readable profile, and see the habits, strengths, and blind spots that shape how you move through life.
+            Explore eight dimensions of personality with balanced questions and a nuanced profile. No single four-letter label can capture all of you.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -50,9 +50,9 @@ export default function HeroSection() {
 
           <div className="mt-8 grid grid-cols-3 gap-3 max-w-xl">
             {[
-              [Clock3, "5 min"],
-              [CheckCircle2, "20 prompts"],
-              [Fingerprint, "16 results"],
+              [Clock3, "8–10 min"],
+              [CheckCircle2, "48 prompts"],
+              [Fingerprint, "8 dimensions"],
             ].map(([Icon, label]) => (
               <div key={label} className="rounded-lg border border-border bg-card px-3 py-3">
                 <Icon className="w-4 h-4 text-primary mb-2" />
@@ -70,9 +70,9 @@ export default function HeroSection() {
         >
           <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
             <div>
-              <div className="text-sm text-muted-foreground">Sample result</div>
-              <h2 className="font-heading text-3xl font-bold mt-1">INFP</h2>
-              <p className="text-sm text-muted-foreground mt-1">The Mediator - reflective, imaginative, values-led.</p>
+              <div className="text-sm text-muted-foreground">Sample profile</div>
+              <h2 className="font-heading text-3xl font-bold mt-1">A mix of traits</h2>
+              <p className="text-sm text-muted-foreground mt-1">Distinct tendencies, not a single personality box.</p>
             </div>
             <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
               <Compass className="w-6 h-6 text-primary" />
@@ -96,11 +96,11 @@ export default function HeroSection() {
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="rounded-lg bg-secondary p-4">
               <div className="text-xs text-muted-foreground">Strength</div>
-              <div className="mt-1 font-semibold">Reads people deeply</div>
+              <div className="mt-1 font-semibold">People-aware</div>
             </div>
             <div className="rounded-lg bg-secondary p-4">
               <div className="text-xs text-muted-foreground">Growth edge</div>
-              <div className="mt-1 font-semibold">Overthinks choices</div>
+              <div className="mt-1 font-semibold">Reflects before acting</div>
             </div>
           </div>
         </motion.div>
