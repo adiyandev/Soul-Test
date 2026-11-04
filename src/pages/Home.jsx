@@ -44,7 +44,7 @@ export default function Home() {
             </div>
             <span className="font-heading font-semibold text-foreground">Soul Test</span>
           </div>
-          <p>Discover who you truly are. For entertainment purposes.</p>
+          <p>Explore your tendencies, not a fixed label. For self-reflection, not diagnosis.</p>
         </div>
       </footer>
     </div>
