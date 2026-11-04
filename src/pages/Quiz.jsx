@@ -19,12 +19,7 @@ export default function Quiz() {
     const newAnswers = { ...answers, [currentQ]: value };
     setAnswers(newAnswers);
 
-    // Auto-advance after short delay
-    setTimeout(() => {
-      if (currentQ < questions.length - 1) {
-        setCurrentQ(currentQ + 1);
-      }
-    }, 350);
+    // Keep navigation deliberate so an answer cannot accidentally skip a question.
   };
 
   const handleFinish = () => {
@@ -73,20 +68,8 @@ export default function Quiz() {
               Back
             </Button>
 
-            <div className="flex items-center gap-1.5">
-              {questions.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentQ(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    i === currentQ
-                      ? "bg-primary w-6"
-                      : answers[i] !== undefined
-                        ? "bg-primary/40"
-                        : "bg-border"
-                  }`}
-                />
-              ))}
+            <div className="text-xs text-muted-foreground tabular-nums">
+              {answeredCount} of {questions.length} answered
             </div>
 
             {currentQ < questions.length - 1 ? (
