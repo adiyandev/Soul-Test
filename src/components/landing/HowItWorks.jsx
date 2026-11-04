@@ -5,17 +5,17 @@ const steps = [
   {
     icon: ClipboardList,
     title: "Answer Honestly",
-    description: "Respond to 20 carefully crafted statements. There are no right or wrong answers - just be yourself.",
+    description: "Respond to 48 balanced statements about how you think, connect, work, and respond to change. Answer for your usual behaviour, not your ideal self.",
   },
   {
     icon: Brain,
     title: "Get Analyzed",
-    description: "Your responses are mapped across four key personality dimensions to determine your unique type.",
+    description: "Your answers are scored across eight separate trait dimensions, including social energy, openness, assertiveness, and emotional reactivity.",
   },
   {
     icon: Fingerprint,
     title: "Discover Your Type",
-    description: "Receive a detailed profile with your strengths, growth areas, ideal careers, and famous matches.",
+    description: "See a continuous profile with nuanced scores and explanations. You are not reduced to one four-letter personality type.",
   },
 ];
 
