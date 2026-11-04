@@ -29,7 +29,8 @@ export default function Profile() {
 
   const share = async () => {
     const profile = result?.profile || {};
-    const text = traitInfo.map((trait) => `${trait.label}: ${profile[trait.key] ?? 50}%`).join("\n");
+    const typeLabel = result?.type && personalityTypes[result.type] ? `Personality type: ${result.type} — ${personalityTypes[result.type].title}\n` : "";
+    const text = typeLabel + traitInfo.map((trait) => `${trait.label}: ${profile[trait.key] ?? 50}%`).join("\n");
     try {
       if (navigator.share) await navigator.share({ title: "My Soul Test profile", text });
       else { await navigator.clipboard.writeText(text); toast.success("Profile copied!"); }
