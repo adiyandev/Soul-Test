@@ -1,31 +1,255 @@
+export const traits = [
+  { key: "openness", label: "Openness", low: "Practical and familiar", high: "Curious and exploratory", description: "How strongly you seek novelty, abstract ideas, imagination, and unfamiliar perspectives." },
+  { key: "conscientiousness", label: "Conscientiousness", low: "Flexible and unstructured", high: "Organised and persistent", description: "How you approach commitments, planning, detail, and follow-through." },
+  { key: "sociability", label: "Social energy", low: "Reserved and inwardly recharged", high: "Outgoing and socially energised", description: "How much social interaction you tend to seek and how it affects your energy." },
+  { key: "compassion", label: "Interpersonal compassion", low: "Direct and task-focused", high: "Empathic and people-aware", description: "How much you naturally attend to other people's feelings and needs." },
+  { key: "emotionalReactivity", label: "Emotional reactivity", low: "Steady under everyday stress", high: "Strongly affected by emotional events", description: "How intensely and how long everyday stressors tend to affect your emotional state. This is not a diagnosis." },
+  { key: "assertiveness", label: "Assertiveness", low: "Accommodating and cautious", high: "Direct and self-advocating", description: "How readily you express your views, needs, boundaries, and preferences." },
+  { key: "independence", label: "Independence", low: "Feedback-oriented and interdependent", high: "Self-directed and self-reliant", description: "How much you rely on your own judgement and maintain a sense of self in relationships." },
+  { key: "adaptability", label: "Adaptability", low: "Consistent and plan-oriented", high: "Flexible and change-ready", description: "How readily you revise plans, approaches, and opinions when circumstances change." },
+];
+
 export const questions = [
-  // E/I dimension (questions 0-4)
-  { text: "You regularly make new friends.", dimension: "EI", direction: "E" },
-  { text: "At social events, you rarely try to introduce yourself to new people.", dimension: "EI", direction: "I" },
-  { text: "You feel more energized after spending time with a group of people.", dimension: "EI", direction: "E" },
-  { text: "You prefer to have a few close friends rather than a large circle of acquaintances.", dimension: "EI", direction: "I" },
-  { text: "You enjoy being the center of attention.", dimension: "EI", direction: "E" },
-
-  // S/N dimension (questions 5-9)
-  { text: "You focus more on the present than the future.", dimension: "SN", direction: "S" },
-  { text: "You are drawn to exploring new ideas and theories.", dimension: "SN", direction: "N" },
-  { text: "You prefer practical, hands-on experiences over abstract discussions.", dimension: "SN", direction: "S" },
-  { text: "You often think about what the world could look like in the future.", dimension: "SN", direction: "N" },
-  { text: "You trust your direct observations more than theoretical possibilities.", dimension: "SN", direction: "S" },
-
-  // T/F dimension (questions 10-14)
-  { text: "You prioritize logic over emotions when making important decisions.", dimension: "TF", direction: "T" },
-  { text: "You find it easy to empathize with a person whose experiences differ from yours.", dimension: "TF", direction: "F" },
-  { text: "You believe that being objective is more important than being compassionate.", dimension: "TF", direction: "T" },
-  { text: "You consider people's feelings before telling them the hard truth.", dimension: "TF", direction: "F" },
-  { text: "You value fairness and justice more than mercy and forgiveness.", dimension: "TF", direction: "T" },
-
-  // J/P dimension (questions 15-19)
-  { text: "You prefer to have a detailed plan rather than figuring things out as you go.", dimension: "JP", direction: "J" },
-  { text: "You enjoy having a spontaneous, flexible lifestyle.", dimension: "JP", direction: "P" },
-  { text: "You feel stressed when you don't have a clear schedule.", dimension: "JP", direction: "J" },
-  { text: "You often leave things to the last minute and still get them done.", dimension: "JP", direction: "P" },
-  { text: "Completing tasks well ahead of the deadline brings you satisfaction.", dimension: "JP", direction: "J" },
+  {
+    "text": "I enjoy exploring ideas even when they have no immediate practical use.",
+    "trait": "openness",
+    "polarity": 1
+  },
+  {
+    "text": "I am curious about viewpoints that challenge what I already believe.",
+    "trait": "openness",
+    "polarity": 1
+  },
+  {
+    "text": "I often connect ideas from unrelated subjects.",
+    "trait": "openness",
+    "polarity": 1
+  },
+  {
+    "text": "I prefer familiar methods and established answers over experimenting.",
+    "trait": "openness",
+    "polarity": -1
+  },
+  {
+    "text": "Imagining different possible futures comes naturally to me.",
+    "trait": "openness",
+    "polarity": 1
+  },
+  {
+    "text": "I lose interest when a topic has no clear, concrete application.",
+    "trait": "openness",
+    "polarity": -1
+  },
+  {
+    "text": "I follow through on commitments even when motivation fades.",
+    "trait": "conscientiousness",
+    "polarity": 1
+  },
+  {
+    "text": "I break large goals into manageable steps.",
+    "trait": "conscientiousness",
+    "polarity": 1
+  },
+  {
+    "text": "I usually notice details that could cause problems later.",
+    "trait": "conscientiousness",
+    "polarity": 1
+  },
+  {
+    "text": "I often leave important tasks until the pressure becomes urgent.",
+    "trait": "conscientiousness",
+    "polarity": -1
+  },
+  {
+    "text": "I keep track of responsibilities without needing repeated reminders.",
+    "trait": "conscientiousness",
+    "polarity": 1
+  },
+  {
+    "text": "My plans often fall apart because I do not organise my time.",
+    "trait": "conscientiousness",
+    "polarity": -1
+  },
+  {
+    "text": "After a busy social day, I usually feel energised rather than depleted.",
+    "trait": "sociability",
+    "polarity": 1
+  },
+  {
+    "text": "I find it natural to start conversations with people I do not know.",
+    "trait": "sociability",
+    "polarity": 1
+  },
+  {
+    "text": "I enjoy thinking out loud with other people.",
+    "trait": "sociability",
+    "polarity": 1
+  },
+  {
+    "text": "I usually prefer a quiet setting to a lively group.",
+    "trait": "sociability",
+    "polarity": -1
+  },
+  {
+    "text": "I feel comfortable being noticed in a group.",
+    "trait": "sociability",
+    "polarity": 1
+  },
+  {
+    "text": "I need plenty of time alone after extended social interaction.",
+    "trait": "sociability",
+    "polarity": -1
+  },
+  {
+    "text": "I try to understand what someone might be feeling before I respond.",
+    "trait": "compassion",
+    "polarity": 1
+  },
+  {
+    "text": "I can disagree with someone while still treating their feelings carefully.",
+    "trait": "compassion",
+    "polarity": 1
+  },
+  {
+    "text": "When someone is struggling, I notice even subtle changes in their behaviour.",
+    "trait": "compassion",
+    "polarity": 1
+  },
+  {
+    "text": "I tend to dismiss emotional reactions when they seem illogical.",
+    "trait": "compassion",
+    "polarity": -1
+  },
+  {
+    "text": "I consider how a decision will affect the people involved.",
+    "trait": "compassion",
+    "polarity": 1
+  },
+  {
+    "text": "I find it difficult to stay patient when people express strong emotions.",
+    "trait": "compassion",
+    "polarity": -1
+  },
+  {
+    "text": "A small negative interaction can affect my mood for hours.",
+    "trait": "emotionalReactivity",
+    "polarity": 1
+  },
+  {
+    "text": "I replay upsetting conversations long after they have ended.",
+    "trait": "emotionalReactivity",
+    "polarity": 1
+  },
+  {
+    "text": "Uncertainty in an important relationship can make me feel unsettled.",
+    "trait": "emotionalReactivity",
+    "polarity": 1
+  },
+  {
+    "text": "I can usually recover my emotional balance quickly after a setback.",
+    "trait": "emotionalReactivity",
+    "polarity": -1
+  },
+  {
+    "text": "I notice myself becoming tense when several things are unresolved.",
+    "trait": "emotionalReactivity",
+    "polarity": 1
+  },
+  {
+    "text": "Criticism rarely stays on my mind for very long.",
+    "trait": "emotionalReactivity",
+    "polarity": -1
+  },
+  {
+    "text": "I can express a different opinion even when the group disagrees.",
+    "trait": "assertiveness",
+    "polarity": 1
+  },
+  {
+    "text": "I ask directly for what I need instead of hoping people will guess.",
+    "trait": "assertiveness",
+    "polarity": 1
+  },
+  {
+    "text": "I can set a boundary without feeling that I must over-explain it.",
+    "trait": "assertiveness",
+    "polarity": 1
+  },
+  {
+    "text": "I often stay silent even when something important needs to be said.",
+    "trait": "assertiveness",
+    "polarity": -1
+  },
+  {
+    "text": "I am comfortable taking the lead when a situation needs direction.",
+    "trait": "assertiveness",
+    "polarity": 1
+  },
+  {
+    "text": "I avoid speaking up because I worry about disappointing people.",
+    "trait": "assertiveness",
+    "polarity": -1
+  },
+  {
+    "text": "I am comfortable making important choices without seeking approval.",
+    "trait": "independence",
+    "polarity": 1
+  },
+  {
+    "text": "I keep my own interests and goals even when I am close to someone.",
+    "trait": "independence",
+    "polarity": 1
+  },
+  {
+    "text": "I can spend time alone without feeling that something is missing.",
+    "trait": "independence",
+    "polarity": 1
+  },
+  {
+    "text": "My confidence depends heavily on how other people respond to me.",
+    "trait": "independence",
+    "polarity": -1
+  },
+  {
+    "text": "I prefer to form my own view before asking others what they think.",
+    "trait": "independence",
+    "polarity": 1
+  },
+  {
+    "text": "I often change my preferences to avoid being different from people around me.",
+    "trait": "independence",
+    "polarity": -1
+  },
+  {
+    "text": "I can adjust my approach when a plan stops working.",
+    "trait": "adaptability",
+    "polarity": 1
+  },
+  {
+    "text": "Unexpected changes are usually manageable for me.",
+    "trait": "adaptability",
+    "polarity": 1
+  },
+  {
+    "text": "I can consider new evidence without feeling that I have to defend my first opinion.",
+    "trait": "adaptability",
+    "polarity": 1
+  },
+  {
+    "text": "I become frustrated when a situation does not follow the plan I expected.",
+    "trait": "adaptability",
+    "polarity": -1
+  },
+  {
+    "text": "I am willing to experiment before deciding on the best method.",
+    "trait": "adaptability",
+    "polarity": 1
+  },
+  {
+    "text": "I find it difficult to let go of a plan once I have committed to it.",
+    "trait": "adaptability",
+    "polarity": -1
+  }
 ];
 
 export const personalityTypes = {
@@ -208,39 +432,65 @@ export const personalityTypes = {
 };
 
 export function calculateResult(answers) {
-  const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+  const profile = {};
 
-  questions.forEach((q, i) => {
-    const answer = answers[i];
-    if (answer === undefined) return;
+  traits.forEach((trait) => {
+    const traitItems = questions.filter((question) => question.trait === trait.key);
+    const values = traitItems
+      .map((question) => {
+        const answer = answers[questions.indexOf(question)];
+        if (answer === undefined) return null;
+        return question.polarity === 1 ? answer : 8 - answer;
+      })
+      .filter((value) => value !== null);
 
-    // answer ranges from 1 (strongly disagree) to 7 (strongly agree)
-    const weight = answer - 4; // ranges from -3 to 3
-    
-    if (weight > 0) {
-      scores[q.direction] += weight;
-    } else if (weight < 0) {
-      // opposite direction
-      const opposite = {
-        E: "I", I: "E", S: "N", N: "S", T: "F", F: "T", J: "P", P: "J"
-      };
-      scores[opposite[q.direction]] += Math.abs(weight);
-    }
+    const average = values.length
+      ? values.reduce((sum, value) => sum + value, 0) / values.length
+      : 4;
+    profile[trait.key] = Math.round(((average - 1) / 6) * 100);
   });
 
+  // Four-letter shorthand is retained only as a familiar, secondary reference.
+  // The continuous trait profile is the primary result.
   const type = [
-    scores.E >= scores.I ? "E" : "I",
-    scores.S >= scores.N ? "S" : "N",
-    scores.T >= scores.F ? "T" : "F",
-    scores.J >= scores.P ? "J" : "P",
+    profile.sociability >= 50 ? "E" : "I",
+    profile.openness >= 50 ? "N" : "S",
+    profile.compassion >= 50 ? "F" : "T",
+    profile.conscientiousness >= 50 ? "J" : "P",
   ].join("");
 
   const percentages = {
-    EI: Math.round((scores.E / (scores.E + scores.I || 1)) * 100),
-    SN: Math.round((scores.S / (scores.S + scores.N || 1)) * 100),
-    TF: Math.round((scores.T / (scores.T + scores.F || 1)) * 100),
-    JP: Math.round((scores.J / (scores.J + scores.P || 1)) * 100),
+    EI: profile.sociability,
+    SN: 100 - profile.openness,
+    TF: 100 - profile.compassion,
+    JP: profile.conscientiousness,
   };
 
-  return { type, percentages, details: personalityTypes[type] };
+  const ranked = traits
+    .map((trait) => ({ ...trait, score: profile[trait.key] }))
+    .sort((a, b) => b.score - a.score);
+
+  const strongest = ranked.slice(0, 3).map((trait) => trait.label);
+  const balanced = ranked
+    .filter((trait) => trait.score >= 40 && trait.score <= 60)
+    .map((trait) => trait.label);
+
+  const summary = strongest.length
+    ? `Your strongest current tendencies show up in ${strongest.join(", ").toLowerCase()}. These are preferences, not fixed limits: your behaviour can change with context, stress, experience, and the people around you.`
+    : "Your answers show a varied profile. No single trait needs to define you.";
+
+  return {
+    type,
+    percentages,
+    profile,
+    traits,
+    summary,
+    strongest,
+    balanced,
+    details: personalityTypes[type],
+    assessment: {
+      questionCount: questions.length,
+      note: "This is an informal self-reflection questionnaire, not a clinically validated or diagnostic psychological assessment.",
+    },
+  };
 }
