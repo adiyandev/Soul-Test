@@ -4,10 +4,10 @@ import { ArrowRight, BrainCircuit, CheckCircle2, Clock3, Compass, Fingerprint } 
 import { Button } from "@/components/ui/button";
 
 const previewTraits = [
-  { label: "Energy", value: "Introverted", width: "72%" },
-  { label: "Focus", value: "Intuitive", width: "84%" },
-  { label: "Decisions", value: "Feeling", width: "64%" },
-  { label: "Lifestyle", value: "Perceiving", width: "78%" },
+  { label: "Openness", value: "Exploratory", width: "72%" },
+  { label: "Social energy", value: "Reserved", width: "38%" },
+  { label: "Compassion", value: "People-aware", width: "76%" },
+  { label: "Adaptability", value: "Flexible", width: "68%" },
 ];
 
 export default function HeroSection() {
