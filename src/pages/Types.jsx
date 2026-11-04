@@ -35,9 +35,9 @@ export default function Types() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className="font-heading text-4xl md:text-5xl font-bold">All Personality Types</h1>
+            <h1 className="font-heading text-4xl md:text-5xl font-bold">Optional 16-Type Reference</h1>
             <p className="mt-4 text-muted-foreground text-lg max-w-xl mx-auto">
-              Explore all 16 personality types. Click on any type to learn more.
+              These familiar four-letter labels are optional shorthand, not a complete description of anyone. Your main Soul Test result is the eight-dimension trait profile.
             </p>
           </motion.div>
 
