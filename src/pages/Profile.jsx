@@ -4,6 +4,7 @@ import Navbar from "@/components/shared/Navbar";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, RotateCcw, Share2 } from "lucide-react";
 import { toast } from "sonner";
+import { personalityTypes } from "@/lib/personalityData";
 
 const traitInfo = [
   { key: "openness", label: "Openness", low: "Practical and familiar", high: "Curious and exploratory", description: "Interest in novelty, ideas, imagination, and unfamiliar perspectives." },
@@ -68,6 +69,21 @@ export default function Profile() {
               A profile is more useful than a box. These scores describe tendencies in your answers, not fixed traits or limits on who you can become.
             </p>
           </div>
+
+          {result.type && personalityTypes[result.type] && (
+            <section className="rounded-3xl border border-border bg-card p-6 md:p-8 mb-8">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Classic 16-type result</div>
+                  <h2 className="font-heading text-2xl font-bold mt-2">{result.type} · {personalityTypes[result.type].title}</h2>
+                  <p className="text-sm text-muted-foreground mt-2 max-w-2xl">{personalityTypes[result.type].tagline}</p>
+                  <p className="text-xs text-muted-foreground mt-2">A secondary shorthand, not a complete or definitive description of you.</p>
+                </div>
+                <div className="text-5xl" aria-hidden="true">{personalityTypes[result.type].emoji}</div>
+              </div>
+              <Link to={`/types?type=${result.type}`} className="inline-block text-sm text-primary hover:underline mt-5">Explore this type and all 16 types</Link>
+            </section>
+          )}
 
           <div className="grid md:grid-cols-2 gap-4">
             {traitInfo.map((trait, index) => {
