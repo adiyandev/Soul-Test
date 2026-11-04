@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, RotateCcw, Share2, User, Sparkles } from "lucide-react";
 import Navbar from "@/components/shared/Navbar";
 import { toast } from "sonner";
+import { personalityTypes } from "@/lib/personalityData";
+import ResultCard from "@/components/results/ResultCard";
 
 const fallbackTraits = [
   { key: "openness", label: "Openness", low: "Practical and familiar", high: "Curious and exploratory", description: "Your interest in novelty, ideas, imagination, and unfamiliar perspectives." },
@@ -90,7 +92,8 @@ export default function Results() {
     .sort((a, b) => b.score - a.score);
   const topTraits = strongest.slice(0, 3);
   const shareText = [
-    "My Soul Test personality profile",
+    `My Soul Test personality type: ${result.type || "Not available"}${personalityTypes[result.type] ? ` — ${personalityTypes[result.type].title}` : ""}`,
+    "My multidimensional personality profile",
     ...strongest.map((trait) => `${trait.label}: ${trait.score}%`),
     "A self-reflection profile, not a diagnosis or fixed personality label.",
   ].join("\n");
@@ -135,6 +138,20 @@ export default function Results() {
               ))}
             </div>
           </section>
+
+          {result.type && personalityTypes[result.type] && (
+            <section className="mb-10 rounded-3xl border border-border bg-card/40 p-5 md:p-8">
+              <div className="mb-7 text-center">
+                <div className="text-xs uppercase tracking-[0.18em] text-primary font-semibold">Your classic 16-type result</div>
+                <h2 className="font-heading text-2xl md:text-3xl font-semibold mt-2">Your type, alongside your full profile</h2>
+                <p className="text-sm text-muted-foreground mt-2 max-w-2xl mx-auto">This familiar four-letter framework is a secondary shorthand based on four broad preferences. It does not capture every dimension measured above.</p>
+              </div>
+              <ResultCard details={personalityTypes[result.type]} type={result.type} />
+              <div className="text-center mt-7">
+                <Link to={`/types?type=${result.type}`} className="text-sm text-primary hover:underline">Explore all 16 personality types</Link>
+              </div>
+            </section>
+          )}
 
           <div className="flex items-end justify-between gap-4 mb-4">
             <div>
